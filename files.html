@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Real-Time Messaging with Web Sockets</title>
+</head>
+<body>
+  <h1>Real-Time Messaging with Web Sockets</h1>
+  <div id="messages"></div>
+  
+  <script>
+    const messagesDiv = document.getElementById("messages");
+    const socket = new WebSocket("https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/url"); // Establish WebSocket connection
+    
+    socket.onmessage = function(event) {
+      messagesDiv.innerHTML += `<p>${event.data}</p>`; // Display received message
+    };
+    
+    // Function to send a message from the client to the server
+    function sendMessage() {
+      const message = "Hello, server!";
+      socket.send(message);
+    }
+  </script>
+</body>
+</html>
